@@ -1,13 +1,8 @@
 <template>
-  <div :class="statusBgClass" class="relative overflow-hidden rounded-xl p-4 border-l-4 transition-all duration-200">
-    <!-- Animated Background Pattern -->
-    <div class="absolute inset-0 opacity-5">
-      <div class="absolute inset-0" :class="patternClass"></div>
-    </div>
-
-    <div class="relative flex items-center gap-4">
-      <div :class="iconBgClass" class="w-12 h-12 rounded-xl flex items-center justify-center shrink-0 shadow-md">
-        <svg class="w-6 h-6" :class="iconClass" fill="currentColor" viewBox="0 0 20 20">
+  <div :class="statusBgClass" class="rounded-lg p-3 border transition-colors">
+    <div class="flex items-center gap-2.5">
+      <div :class="iconBgClass" class="w-9 h-9 rounded-lg flex items-center justify-center shrink-0">
+        <svg class="w-5 h-5" :class="iconClass" fill="currentColor" viewBox="0 0 20 20">
           <path v-if="status === 'active'" fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
           <path v-else-if="status === 'expiring_soon'" fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clip-rule="evenodd" />
           <path v-else-if="status === 'expired'" fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd" />
@@ -15,11 +10,10 @@
         </svg>
       </div>
       <div class="flex-1 min-w-0">
-        <div :class="statusTextClass" class="font-bold text-base mb-1 flex items-center gap-2">
+        <div :class="statusTextClass" class="font-bold text-sm mb-0.5">
           {{ statusText }}
-          <span v-if="status === 'active'" class="inline-block w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
         </div>
-        <div class="text-sm text-slate-700 font-medium">
+        <div class="text-xs text-slate-600">
           {{ timeInfo }}
         </div>
       </div>
@@ -65,50 +59,40 @@ const statusText = computed(() => {
 
 const statusBgClass = computed(() => {
   const classes = {
-    active: 'bg-gradient-to-r from-green-50 to-emerald-50 border-l-green-500',
-    expiring_soon: 'bg-gradient-to-r from-yellow-50 to-amber-50 border-l-yellow-500',
-    expired: 'bg-gradient-to-r from-red-50 to-rose-50 border-l-red-500',
-    no_token: 'bg-gradient-to-r from-slate-50 to-gray-50 border-l-slate-400'
+    active: 'bg-emerald-50 border-emerald-200',
+    expiring_soon: 'bg-amber-50 border-amber-200',
+    expired: 'bg-red-50 border-red-200',
+    no_token: 'bg-amber-50 border-amber-200'
   };
   return classes[status.value];
 });
 
 const iconBgClass = computed(() => {
   const classes = {
-    active: 'bg-gradient-to-br from-green-100 to-emerald-100',
-    expiring_soon: 'bg-gradient-to-br from-yellow-100 to-amber-100',
-    expired: 'bg-gradient-to-br from-red-100 to-rose-100',
-    no_token: 'bg-gradient-to-br from-slate-100 to-gray-100'
+    active: 'bg-emerald-100',
+    expiring_soon: 'bg-amber-100',
+    expired: 'bg-red-100',
+    no_token: 'bg-amber-100'
   };
   return classes[status.value];
 });
 
 const iconClass = computed(() => {
   const classes = {
-    active: 'text-green-600',
-    expiring_soon: 'text-yellow-600',
+    active: 'text-emerald-600',
+    expiring_soon: 'text-amber-600',
     expired: 'text-red-600',
-    no_token: 'text-slate-600'
+    no_token: 'text-amber-600'
   };
   return classes[status.value];
 });
 
 const statusTextClass = computed(() => {
   const classes = {
-    active: 'text-green-800',
-    expiring_soon: 'text-yellow-800',
-    expired: 'text-red-800',
-    no_token: 'text-slate-800'
-  };
-  return classes[status.value];
-});
-
-const patternClass = computed(() => {
-  const classes = {
-    active: 'bg-green-600',
-    expiring_soon: 'bg-yellow-600',
-    expired: 'bg-red-600',
-    no_token: 'bg-slate-600'
+    active: 'text-emerald-700',
+    expiring_soon: 'text-amber-700',
+    expired: 'text-red-700',
+    no_token: 'text-amber-700'
   };
   return classes[status.value];
 });

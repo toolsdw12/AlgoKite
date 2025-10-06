@@ -1,7 +1,9 @@
+// Load environment variables FIRST (before any other imports)
+import './config/env.js';
+
 import express from 'express';
 import cors from 'cors';
 import mongoose from 'mongoose';
-import dotenv from 'dotenv';
 
 // Import routes
 import accountsRouter from './routes/accounts.js';
@@ -10,9 +12,6 @@ import tokensRouter from './routes/tokens.js';
 
 // Import services
 import SchedulerService from './services/SchedulerService.js';
-
-// Load environment variables
-dotenv.config();
 
 const app = express();
 const PORT = process.env.PORT || 3000;

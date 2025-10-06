@@ -9,13 +9,15 @@ class CryptoService {
     // IMPORTANT: Set this in .env file for production
     const envKey = process.env.ENCRYPTION_KEY;
 
-    if (envKey) {
-      this.key = Buffer.from(envKey, 'hex');
-    } else {
-      // Development mode: generate a key (not for production!)
-      console.warn('⚠️ No ENCRYPTION_KEY found in .env, using generated key (dev only)');
-      this.key = crypto.randomBytes(this.keyLength);
+    if (!envKey) {
+      throw new Error(
+        '❌ ENCRYPTION_KEY not found in environment variables!\n' +
+        '   Please set ENCRYPTION_KEY in your .env file.\n' +
+        '   Generate a key by running: npm run generate-key'
+      );
     }
+
+    this.key = Buffer.from(envKey, 'hex');
   }
 
   /**
