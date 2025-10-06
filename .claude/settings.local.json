@@ -5,7 +5,8 @@
       "Bash(then ls -la frontend/src)",
       "Bash(cp:*)",
       "Bash(curl:*)",
-      "Bash(timeout 5 npm start)"
+      "Bash(timeout 5 npm start)",
+      "Bash(git add:*)"
     ],
     "deny": [],
     "ask": []
