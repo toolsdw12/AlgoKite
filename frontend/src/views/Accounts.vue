@@ -1,29 +1,14 @@
 <template>
-  <div class="min-h-screen py-6 px-4 sm:px-6 lg:px-8">
+  <div class="py-6 px-4 sm:px-6 lg:px-8">
     <div class="max-w-7xl mx-auto space-y-6">
-      <!-- Header Section -->
-      <header class="bg-white rounded-2xl shadow-sm px-6 py-4">
-        <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-3">
-          <div class="flex items-center gap-3">
-            <div class="w-12 h-12 rounded-xl bg-teal-500 flex items-center justify-center shrink-0">
-              <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 7a2 2 0 012 2m4 0a6 6 0 01-7.743 5.743L11 17H9v2H7v2H4a1 1 0 01-1-1v-2.586a1 1 0 01.293-.707l5.964-5.964A6 6 0 1121 9z" />
-              </svg>
-            </div>
-            <div>
-              <h1 class="text-xl font-bold text-slate-900 leading-tight">
-                Kite Token Manager
-              </h1>
-              <p class="text-xs text-slate-600 leading-tight mt-0.5">
-                Manage your Zerodha Kite API tokens efficiently and securely
-              </p>
-            </div>
-          </div>
-          <div class="lg:shrink-0">
-            <AddAccount @created="handleAccountCreated" />
-          </div>
+      <!-- Page Header -->
+      <div class="flex items-center justify-between">
+        <div>
+          <h1 class="text-2xl font-bold text-slate-900">Account Management</h1>
+          <p class="text-sm text-slate-600 mt-1">Manage your Zerodha Kite API accounts and tokens</p>
         </div>
-      </header>
+        <AddAccount @created="handleAccountCreated" />
+      </div>
 
       <!-- Loading State -->
       <div v-if="loading" class="bg-white rounded-2xl shadow-sm border border-slate-100 p-16 text-center">

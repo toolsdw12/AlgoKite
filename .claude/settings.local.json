@@ -6,7 +6,8 @@
       "Bash(cp:*)",
       "Bash(curl:*)",
       "Bash(timeout 5 npm start)",
-      "Bash(git add:*)"
+      "Bash(git add:*)",
+      "Bash(mkdir:*)"
     ],
     "deny": [],
     "ask": []
